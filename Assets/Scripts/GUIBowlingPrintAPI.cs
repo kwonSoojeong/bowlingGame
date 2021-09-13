@@ -17,7 +17,7 @@ namespace Assets.Scripts
             MessageBox.GetComponent<Text>().color = Color.blue;
             MessageBox.GetComponent<Text>().text = "<!> " + message;
 
-            GameObject.Find("KnockedPinInput").GetComponent<KnockedPinInputButton>().setAbleBtns(-1);
+            GameObject.Find("KnockedPinInput").GetComponent<KnockedPinInputButton>().SetAbleInputBtns(-1);
         }
 
         public void LeftPins(int count)
@@ -25,7 +25,7 @@ namespace Assets.Scripts
             MessageBox.GetComponent<Text>().color = Color.blue;
             MessageBox.GetComponent<Text>().text = $"Please click between 0 and {count}." ;
 
-            GameObject.Find("KnockedPinInput").GetComponent<KnockedPinInputButton>().setAbleBtns(count);
+            GameObject.Find("KnockedPinInput").GetComponent<KnockedPinInputButton>().SetAbleInputBtns(count);
         }
 
         public void PrintError(string error)
@@ -42,8 +42,6 @@ namespace Assets.Scripts
 
         public void PrintScroeBoard(List<Frame> frames)
         {
-            MessageBox.GetComponent<Text>().color = Color.black;
-            MessageBox.GetComponent<Text>().text = "Update Scroe board";
 
             // Frame 별로 채울것
             for(int index = 0; index < 10; index++)

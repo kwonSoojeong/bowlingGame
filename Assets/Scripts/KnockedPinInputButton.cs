@@ -8,10 +8,9 @@ public class KnockedPinInputButton : MonoBehaviour
 {
     public void OnClickBtn(int num)
     {
-        GameManager.Instance.InputPins(num);
-        
+        GameManager.Instance.InputPins(num);   
     }
-    public void setAbleBtns(int lastNum)
+    public void SetAbleInputBtns(int lastNum)
     {
         Debug.Log("lastNum " + lastNum);
         for (int i = 0; i<=10; i++)
@@ -19,14 +18,10 @@ public class KnockedPinInputButton : MonoBehaviour
             if (i > lastNum)
             {
                 transform.GetChild(0).GetChild(i).GetComponent<Button>().interactable = false;
-                string name1 = transform.GetChild(0).GetChild(i).name;
-                Debug.Log(">> " + name1);
             }
             else
             {
                 transform.GetChild(0).GetChild(i).GetComponent<Button>().interactable = true;
-                string name1 = transform.GetChild(0).GetChild(i).name;
-                Debug.Log("lastNum 보다 작음 >> " + name1);
             }
         }
     }

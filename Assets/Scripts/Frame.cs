@@ -21,13 +21,13 @@ namespace Assets.Scripts
             get
             {
                 if (FirstTry == Const.TryNotYet)
-                    return $"{Const.Blank}";
+                    return Const.Blank;
                 else if (FirstTry == Const.Ten && FrameNumber == Const.LastFrame) //10 Frame 
-                    return $"{Const.X}";
+                    return Const.X;
                 else if (FirstTry == Const.Ten)
-                    return $"{Const.X}";
+                    return Const.X;
 
-                return $"{FirstTry}";
+                return FirstTry.ToString();
             } 
         }
 
