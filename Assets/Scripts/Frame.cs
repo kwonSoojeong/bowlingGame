@@ -21,13 +21,13 @@ namespace Assets.Scripts
             get
             {
                 if (FirstTry == Const.TryNotYet)
-                    return $"{Const.Blank}{Const.Blank}";
+                    return $"{Const.Blank}";
                 else if (FirstTry == Const.Ten && FrameNumber == Const.LastFrame) //10 Frame 
-                    return $"{Const.X}{Const.Comma}";
+                    return $"{Const.X}";
                 else if (FirstTry == Const.Ten)
-                    return $"{Const.Blank}{Const.X}";
+                    return $"{Const.X}";
 
-                return $"{FirstTry}{Const.Comma}";
+                return $"{FirstTry}";
             } 
         }
 
@@ -57,19 +57,13 @@ namespace Assets.Scripts
                 if (FrameNumber == Const.LastFrame)
                 {
                     if (ThirdTry == Const.TryNotYet)
-                    {
-                        if (SecondTry == Const.TryNotYet)
-                            return $"{Const.Blank}{Const.Blank}";
-                        else
-                            return $"{Const.Comma}{Const.Blank}";
-                    }
-
+                        return Const.Blank;
+                    
                     if (ThirdTry == Const.Ten)
-                        return $"{Const.Comma}{Const.X}";
-
-                    return $"{Const.Comma}{ThirdTry}";
+                        return Const.X;
+                    return ThirdTry.ToString();
                 }
-                return "";
+                return Const.Blank;
             }
         }
         public bool IsSpared {

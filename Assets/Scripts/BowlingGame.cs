@@ -10,7 +10,8 @@ public class BowlingGame
     /// 투구 별 넘어진 핀의 갯 수 배열
     /// </summary>
     private int arrayIndex = 0;
-    private int leftPins = 10;
+    private int leftPins;
+    public int LeftPins { get { return leftPins; } }
 
     /// <summary>
     /// Frame 별 Score 계산을 위한 List
@@ -25,51 +26,72 @@ public class BowlingGame
    
    public BowlingGame (IBowlingPrintAPI printAPI)
     {
+        leftPins = 10;
         frames = new List<Frame>();
         for (int i = 0; i < 10; i++)
         {
             frames.Add(new Frame(i + 1));
         }
         Init(printAPI);
+
+        printAPI.StartMessage("Let's Play Bowling game!");
+        printAPI.StartMessage("Please enter between 0 and 10.");
     }
 
     public void KnockedDownPins(int count)
     {
+        if (CheckGameEnd() || !ValidateCount(count)) return;
+
+        UpdatePins(count);
+        UpdateFrameArray(count);
+
+        printAPI.PrintScroeBoard(frames);
+
+        MoveToNextTurn(count);
+
+        CheckGameEnd();
+    }
+
+    private bool ValidateCount(int count)
+    {
         if (count < 0 || count > leftPins)
         {
             printAPI.PrintError($" Please enter between 0 and {leftPins}. Try argin.");
-            return;
+            return false;
         }
+        return true;
+    }
 
+    private void UpdatePins(int count)
+    {
+        leftPins -= count;
+        //마지막 턴이거나, 핀이 다 쓰러지면 새로 채운다.
+        if (arrayIndex % 2 == 1 || leftPins == 0)
+            leftPins = Const.Ten;
+        printAPI.LeftPins(leftPins);
+    }
+
+    private bool CheckGameEnd()
+    {
         if (frames[Const.LastFrame - 1].IsSpared
-            || frames[Const.LastFrame - 1].IsStrick)
+                    || frames[Const.LastFrame - 1].IsStrick)
         {
             if (arrayIndex > Const.MexIndex)
             {
                 printAPI.EndMessage($"++ Game is done! ++");
-                return;
+                return true;
             }
+            return false;
         }
         else
         {
             if (arrayIndex > Const.MexIndex - 1)
             {
                 printAPI.EndMessage("++ Game is done! ++");
-                return;
+                return true;
             }
+            return false;
         }
-
-        leftPins -= count;
-        //마지막 턴이거나, 핀이 다 쓰러지면 새로 채운다.
-        if (arrayIndex % 2 == 1 || leftPins == 0)
-            leftPins = Const.Ten;
-
-
-        UpdateFrameArray(count);
-
-        printAPI.PrintScroeBoard(frames);
-
-        MoveToNextTurn(count);
     }
 
     private void UpdateFrameArray(int count)

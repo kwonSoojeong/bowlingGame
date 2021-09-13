@@ -7,11 +7,11 @@ using Assets.Scripts.Console;
 
 namespace Assets.Scripts
 {
-    class CUIBowlingPrintAPI : IBowlingPrintAPI
+    class CUIBowlingPrintAPI :IBowlingPrintAPI
     {
         public void StartMessage(string message)
         {
-            UnityConsole.WriteLine(message);
+            UnityConsole.WriteLine("++ " + message + " ++");
         }
         public void EndMessage(string message)
         {
@@ -43,9 +43,9 @@ namespace Assets.Scripts
             for (int index = 0; index < Const.LastFrame; index++)
             {
                 if (index == Const.LastFrame -1)
-                    msg += $"{index + 1}:[{frames[index].FirstTryStr}{frames[index].SecondTryStr}{frames[index].ThirdTryStr}]\n"; //ex)"10:[X,X,X]\n"
+                    msg += $"{index + 1}:[{frames[index].FirstTryStr},{frames[index].SecondTryStr},{frames[index].ThirdTryStr}]\n"; //ex)"10:[X,X,X]\n"
                 else
-                    msg += $"{index + 1}:[{frames[index].FirstTryStr}{frames[index].SecondTryStr}]{Const.Blank}"; //ex)"1:[2,/] "
+                    msg += $"{index + 1}:[{frames[index].FirstTryStr},{frames[index].SecondTryStr}]{Const.Blank}"; //ex)"1:[2,/] "
 
             }
             return msg;
@@ -62,6 +62,11 @@ namespace Assets.Scripts
                     msg += $"{Const.Blank}{Const.Blank}{Const.Blank}[{frames[i].ScoreStr,5}]\n"; //ex)"   [  111]\n"
             }
             return msg;
+        }
+
+        public void LeftPins(int count)
+        {
+            UnityConsole.WriteLine($"Please enter between 0 and {count}.");
         }
     }
 }

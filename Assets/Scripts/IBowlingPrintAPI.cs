@@ -13,5 +13,6 @@ namespace Assets.Scripts
         void PrintScroeBoard(List<Frame> frames);
         void PrintError(string error);
         void PrintMessage(string message);
+        void LeftPins(int count);
     }
 }
