@@ -126,7 +126,7 @@ public class BowlingGame
     private void MoveToNextTurn(int count)
     {
         //스트라이크시 다음 투구를 건너뛰고 다음 프레임으로 넘어갑니다.
-        if (count == Const.Ten && arrayIndex < Getindex(Const.LastFrame, 1))
+        if (arrayIndex%2 == 0 && count == Const.Ten && arrayIndex < Getindex(Const.LastFrame, 1))
             arrayIndex += 2;
         else
             arrayIndex++;
