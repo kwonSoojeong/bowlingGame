@@ -1,13 +1,12 @@
 ﻿
 using Assets.Scripts.Console;
-using Assets.Scripts.Console.Editor;
 using System;
 using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    class CUIBowlingWindow : EditorWindow
+     class CUIBowlingWindow : EditorWindow
     {
         private BowlingGame bowlingGame;
 
@@ -23,11 +22,11 @@ namespace Assets.Scripts
 
             if (GUILayout.Button("Start Game"))
             {
-                if(!UnityConsole.IsOpen)
+                if (!UnityConsole.IsOpen)
+                {
                     UnityConsole.Open();
-                
-                if (bowlingGame == null)
                     bowlingGame = new BowlingGame(new CUIBowlingPrintAPI());
+                }
             }
         }
         void Update()

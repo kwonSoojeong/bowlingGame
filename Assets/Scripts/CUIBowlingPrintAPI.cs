@@ -7,7 +7,7 @@ using Assets.Scripts.Console;
 
 namespace Assets.Scripts
 {
-    class CUIBowlingPrintAPI :IBowlingPrintAPI
+    public class CUIBowlingPrintAPI :IBowlingPrintAPI
     {
         public void StartMessage(string message)
         {
