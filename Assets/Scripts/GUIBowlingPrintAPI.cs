@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    class GUIBowlingPrintAPI : MonoBehaviour, IBowlingPrintAPI
+    public class GUIBowlingPrintAPI : MonoBehaviour, IBowlingPrintAPI
     {
-    public GameObject MessageBox;
-    public GameObject ScoreTable;
+        public GameObject MessageBox;
+        public GameObject ScoreTable;
         public void EndMessage(string message)
         {
             MessageBox.GetComponent<Text>().color = Color.blue;
@@ -23,7 +23,7 @@ namespace Assets.Scripts
         public void LeftPins(int count)
         {
             MessageBox.GetComponent<Text>().color = Color.blue;
-            MessageBox.GetComponent<Text>().text = $"Please click between 0 and {count}." ;
+            MessageBox.GetComponent<Text>().text = $"Please click between 0 and {count}.";
 
             GameObject.Find("KnockedPinInput").GetComponent<KnockedPinInputButton>().SetAbleInputBtns(count);
         }
@@ -44,15 +44,15 @@ namespace Assets.Scripts
         {
 
             // Frame 별로 채울것
-            for(int index = 0; index < 10; index++)
+            for (int index = 0; index < 10; index++)
             {
                 Text FristTry = ScoreTable.transform.GetChild(index).GetChild(1).GetComponent<Text>();
                 Text SecondTry = ScoreTable.transform.GetChild(index).GetChild(2).GetComponent<Text>();
-                
+
                 FristTry.text = frames[index].FirstTryStr;
                 SecondTry.text = frames[index].SecondTryStr;
 
-                if(index == 9)
+                if (index == 9)
                 {
                     Text ThridTry = ScoreTable.transform.GetChild(index).GetChild(4).GetComponent<Text>();
                     ThridTry.text = frames[index].ThirdTryStr;
@@ -66,8 +66,8 @@ namespace Assets.Scripts
         public void StartMessage(string message)
         {
             MessageBox.GetComponent<Text>().color = Color.black;
-            MessageBox.GetComponent<Text>().text = "++"+message+"++";
+            MessageBox.GetComponent<Text>().text = "++" + message + "++";
         }
-        
+
     }
 }

@@ -1,8 +1,5 @@
 using UnityEngine;
 using Assets.Scripts;
-using UnityEditor;
-using Assets.Scripts.Console;
-using System;
 
 public class GameManager : MonoBehaviour
 {

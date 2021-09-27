@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-     class CUIBowlingWindow : EditorWindow
+#if UNITY_EDITOR
+    class CUIBowlingWindow : EditorWindow
     {
         private BowlingGame bowlingGame;
 
@@ -60,4 +61,5 @@ namespace Assets.Scripts
         }
 
     }
+#endif
 }

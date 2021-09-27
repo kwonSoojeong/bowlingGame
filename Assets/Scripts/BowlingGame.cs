@@ -1,8 +1,5 @@
 using Assets.Scripts;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 public class BowlingGame
 {
@@ -17,6 +14,7 @@ public class BowlingGame
     /// Frame 별 Score 계산을 위한 List
     /// </summary>
     private List<Frame> frames;
+    public List<Frame> Frames { get { return frames; } }
     private IBowlingPrintAPI printAPI;
 
     private void Init(IBowlingPrintAPI printAPI)
